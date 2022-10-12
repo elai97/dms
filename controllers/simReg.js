@@ -1,6 +1,10 @@
 /* eslint-env es6 */
 const Documents = require("../models/simReg");
 
+const home = async (req, res) => {
+  res.send("Welcome...")
+}
+
 // Create Documents to the database. 
 const post_documents = async (req, res) => {
   // Validate request
@@ -197,6 +201,7 @@ const get_searchDocuments = async (req, res) => {
 // }
 
 module.exports = {
+  home,
   post_documents,
   download_file,
   get_documents,

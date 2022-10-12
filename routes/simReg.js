@@ -16,6 +16,8 @@ module.exports = function (app) {
     next();
   });
 
+  app.get("/");
+
   app.post("/api/simreg/documents", [authJwt.verifyToken, authJwt.isSimReg_Storage], post_documents);
 
   app.get("/api/simreg/download/:name", [authJwt.verifyToken, authJwt.isSimReg_Storage], download_file);
