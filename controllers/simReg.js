@@ -7,6 +7,7 @@ const home = async (req, res) => {
 
 // Create Documents to the database. 
 const post_documents = async (req, res) => {
+  
   // Validate request
   if (!req.body.dUser) {
     res.status(400).send({ status: 400, message: "Content can not be empty!" });
