@@ -21,17 +21,17 @@ const User = mongoose.model(
             ],
             "status": {
                 "type": "String",
-                default: "Approved"
+                default: "Pending"
             },
             "organization": {
                 "type": "String",
                 default: ""
-            },
+            }
 
         },
         {
             timestamps: true
-        },
+        }
     )
 );
 
