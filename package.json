@@ -6,6 +6,9 @@
     "start": "node index.js",
     "test": "mocha --recursive --timeout 60000"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "author": "elijah",
   "license": "ISC",
   "dependencies": {
@@ -20,6 +23,7 @@
     "express-fileupload": "^1.4.0",
     "form-data": "^4.0.0",
     "formidable": "^2.0.1",
+    "heroku": "^7.65.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^10.0.0",
     "mongoose": "^6.5.1",
