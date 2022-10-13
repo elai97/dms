@@ -41,9 +41,8 @@ mongoose
   });
 
 // declare routes
-require("./routes/simReg")(app);
+require("./routes/storage")(app);
 require("./routes/auth")(app);
-// require("./routes/user")(app);
 
 // listen to server
 app.listen(port, () => {

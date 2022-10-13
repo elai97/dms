@@ -79,6 +79,10 @@ exports.signin = (req, res) => {
                 return res.status(404).send({ message: "User Not found." });
             }
 
+            if (!(user.status == "Approved")) {
+                return res.status(404).send({ message: "Privileges not approved." });
+            }
+
             var passwordIsValid = bcrypt.compareSync(
                 req.body.password,
                 user.password
@@ -106,7 +110,7 @@ exports.signin = (req, res) => {
                 email: user.email,
                 status: user.status,
                 organization: user.organization,
-                product_list: authorities,
+                // product_list: authorities,
                 accessToken: token
             });
         });

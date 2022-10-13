@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var multer = require('multer');
 module.exports.files={
     storage:function(){
@@ -14,9 +16,9 @@ module.exports.files={
 },
 allowedFiles:function(req, file, cb) {
     // Accept images only
-    if (!file.originalname.match(/\.(pdf|doc|txt|jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
-        req.fileValidationError = 'Only pdf|doc|txt|jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF file type are allowed!';
-        return cb(new Error('Only pdf|doc|txt|jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF file type  are allowed!'), false);
+    if (!file.originalname.match(process.env.FILE_FORMAT)) {
+        req.fileValidationError = 'File type not allowed!';
+        return cb(new Error('File type  are allowed!'), false);
     }
     cb(null, true);
 }
