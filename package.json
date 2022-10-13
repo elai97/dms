@@ -6,9 +6,6 @@
     "start": "node index.js",
     "test": "mocha --recursive --timeout 60000"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "author": "elijah",
   "license": "ISC",
   "dependencies": {

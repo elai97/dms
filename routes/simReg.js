@@ -6,6 +6,8 @@ const {
   get_searchDocuments
 } = require("../controllers/simReg");
 const authJwt = require("../utils/authJWT");
+const multer = require('multer');
+const uploadMiddleware = require('../utils/upload-middleware');
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -16,9 +18,12 @@ module.exports = function (app) {
     next();
   });
 
-  app.get("/");
+  const upload = multer({
+                    storage: uploadMiddleware.files.storage(), 
+                    allowedFiles:uploadMiddleware.files.allowedFiles 
+                    }).any('files');
 
-  app.post("/api/simreg/documents", [authJwt.verifyToken, authJwt.isSimReg_Storage], post_documents);
+  app.post("/api/simreg/documents", [authJwt.verifyToken, authJwt.isSimReg_Storage],upload, post_documents);
 
   app.get("/api/simreg/download/:name", [authJwt.verifyToken, authJwt.isSimReg_Storage], download_file);
 
