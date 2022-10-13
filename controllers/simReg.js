@@ -49,7 +49,7 @@ const post_documents = async (req, res) => {
 // Download file
 const download_file = (req, res) => {
   const fileName = req.params.name;
-  const directoryPath = __basedir + "/resources/uploads/";
+  const directoryPath = __basedir + "/public/files/";
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
       res.status(500).send({
