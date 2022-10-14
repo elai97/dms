@@ -115,3 +115,25 @@ exports.signin = (req, res) => {
             });
         });
 };
+
+exports.updateUser = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update can not be empty!"
+    });
+  }
+    
+    User.findOneAndUpdate({email: req.params.email }, 
+    {status: req.body.status }, null, (err, user) => {
+    try {
+        res
+          .status(200)
+          .send([{ message: "Successful",  user }]);
+    } catch (error) {
+        res.status(500).send({
+          message:
+            error.message || "Some error occurred while updating user"
+        });
+    }
+})
+};
