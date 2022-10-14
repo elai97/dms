@@ -117,11 +117,12 @@ exports.signin = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-  if (!req.body) {
+  if (!req.body.status || !req.params.email) {
     return res.status(400).send({
       message: "Data to update can not be empty!"
     });
   }
+  
     
     User.findOneAndUpdate({email: req.params.email }, 
     {status: req.body.status }, null, (err, user) => {
