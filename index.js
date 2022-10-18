@@ -23,9 +23,6 @@ app.use(morgan('dev'));
 
 const port = process.env.PORT || 8080;
 
-const db = require("./models");
-const Role = db.role;
-
 // db connection
 mongoose
   .connect(process.env.DB_CONNECT, {
@@ -48,45 +45,5 @@ require("./routes/auth")(app);
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
-
-
-function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "SimReg_Storage"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'SimReg_Storage' to roles collection");
-      });
-
-      new Role({
-        name: "MTNF_Storage"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'MTNF_Storage' to roles collection");
-      });
-
-      new Role({
-        name: "PPK_Storage"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'PPK_Storage' to roles collection");
-      });
-    }
-  });
-}
-
-initial();
-
 
 module.exports = app;

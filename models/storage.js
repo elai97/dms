@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 // document schema
 const documentsSchema = new mongoose.Schema({
+  "document_source": {
+    "type": "String"
+  },
   "dUser": {
     "type": "String"
   },
@@ -39,13 +42,13 @@ const documentsSchema = new mongoose.Schema({
     "type": "String"
   },
   "xCustomer_MSISDN": {
-    "type": "Number"
+    "type": "String"
   },
   "xUpdate_Date": {
     "type": "Date"
   },
   "xFingerprint_Number": {
-    "type": "Number"
+    "type": "String"
   },
   "content_ID": {
     "type": "String"

@@ -12,6 +12,7 @@ const post_documents = async (req, res) => {
 
   // Create a Documents
   const documents = Documents({
+    document_source: req.body.document_source,
     dUser: req.body.dUser,
     dDocTitle: req.body.dDocTitle,
     dDocAuthor: req.body.dDocAuthor,
